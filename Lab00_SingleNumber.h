@@ -12,7 +12,7 @@ class MyNumber
     explicit MyNumber(DataType rhs = 0) // default constructor
     { num = new DataType { rhs }; }
     
-    MyNumber(const MyNumber<DataType> & rhs)	// copy constructor with a MyNumber instance
+    MyNumber(const MyNumber<DataType>& rhs)	// copy constructor with a MyNumber instance
     { num = new DataType{ *rhs.num }; }
     
     MyNumber(MyNumber<DataType> && rhs)	: num{ rhs.num } // move constructor with a MyNumber instance
@@ -20,14 +20,14 @@ class MyNumber
     
     MyNumber & operator= (const MyNumber<DataType> &rhs)	// copy assignment with a MyNumber instance
     {
-        if (this != &rhs )
-            *num = *rhs.num;
+        if (this != &rhs)
+          *num = *rhs.num;
         return *this;
     }
 
     MyNumber & operator= (MyNumber<DataType> && rhs)	// move assignment with a MyNumber instance 
     {
-        swap( num, rhs.num );
+        swap(num, rhs.num);
         return *this;
     }
 
@@ -46,4 +46,4 @@ class MyNumber
 };
 
 
-#endif // __MYVECTOR_H__
+#endif 
