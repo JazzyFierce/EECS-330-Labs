@@ -22,7 +22,6 @@ class MyQueue : private MyVector<DataType>
             int old_cap = capacity();
 
             MyVector<DataType>::reserve(newCapacity);
-            // c d e a b --> c d e a b (r a n d o)
             if (dataStart > dataEnd) {
                 typename MyVector<DataType>::const_iterator first_empty = MyVector<DataType>::begin();
                 int counter = 0;
@@ -45,10 +44,12 @@ class MyQueue : private MyVector<DataType>
   public:
 
     // default constructor
-    explicit MyQueue(size_t initSize = 0) : MyVector<DataType>(), dataStart{1}, dataEnd{0} { ; }
+    explicit MyQueue(size_t initSize = 0) : MyVector<DataType>(), dataStart{1}, dataEnd{0} 
+    { ; }
 
     // copy constructor
-    MyQueue(const MyQueue & rhs) : MyVector<DataType>(rhs), dataStart{rhs.dataStart}, dataEnd{rhs.dataEnd} { ; }
+    MyQueue(const MyQueue & rhs) : MyVector<DataType>(rhs), dataStart{rhs.dataStart}, dataEnd{rhs.dataEnd} 
+    { ; }
 
     // move constructor
     MyQueue(MyQueue && rhs) : MyVector<DataType>(std::move(rhs))
@@ -96,7 +97,7 @@ class MyQueue : private MyVector<DataType>
         for (size_t i = 0; i != dataEnd + 1; i++) 
             itr++;
 
-	    std::swap(*itr, x);
+	std::swap(*itr, x);
         dataEnd = (dataEnd+1)%(this->capacity());
         resize(MyVector<DataType>::size()+1)
     }
@@ -117,13 +118,16 @@ class MyQueue : private MyVector<DataType>
     }
 
     // check if the queue is empty; return TRUE is empty; FALSE otherwise
-    bool empty(void) const { return this->size()==0; }
+    bool empty(void) const 
+    { return this->size()==0; }
 
     // access the size of the queue
-    size_t size() const { return MyVector<DataType>::size() }
+    size_t size() const 
+    { return MyVector<DataType>::size() }
 
     // access the capacity of the queue
-    size_t capacity(void) const { return MyVector<DataType>::capacity(); }
+    size_t capacity(void) const 
+    { return MyVector<DataType>::capacity(); }
 
 };
 
